@@ -13,6 +13,7 @@ public abstract class DAO<T extends Data> {
 	public abstract boolean insert(T t, boolean update);
 	
 	public abstract boolean delete(int id);
+	
 	public static ArrayList<Data> selectAll(String table) {
 		ArrayList<Data> res = new ArrayList<>();
 		try (Connection conn = Mydb.connect()) {
@@ -53,7 +54,7 @@ public abstract class DAO<T extends Data> {
 			String f = fields[i];
 			Object v = new Object();
 			//apply +1 offset due to rs being 1-indexed
-			//and another +1 to skip id column 
+			//and another +1 to skip id column
 			int j = i+2;
 			if (f.startsWith("s")) {
 				v = rs.getString(j);

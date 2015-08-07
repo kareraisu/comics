@@ -20,9 +20,7 @@ public class Comic extends Data {
 
 	@Override
 	public void print() {
-		String id = Integer.toString(this.id);
-		String qty = Integer.toString(this.getQty());
-		System.out.println(id +"	"+ getTitle() +"		"+ getGenre() +"		"+ qty);
+		System.out.println(id +"	"+ getTitle() +"		"+ getGenre() +"		"+ getQty());
 	}
 	
 	public static String[] getFields() {

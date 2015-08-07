@@ -12,9 +12,9 @@ public class UI extends Main {
 
 	static final int linelength = 50;
 	
-	static final String border = "*";
-	
 	static final String prompt = ">> ";
+
+	static final String border = "*";
 	
 	static final String menuLang = "\n[1] English\n[2] Español\n[3] Argentino\n\n";
 	
@@ -38,12 +38,13 @@ public class UI extends Main {
 	
 	static void loadLocale(String fileName) throws FileNotFoundException {
 	    locale.clear();
-		String filePath = usrdir + "/src/locales/" + fileName + ".txt";
-        Scanner in = new Scanner(new File(filePath), "UTF-8");
-        while(in.hasNextLine()) {
-        	String parts[] = in.nextLine().split(" = ");
-	        locale.put(parts[0], parts[1]);
-        }
+		String filePath = usrdir + "/locales/" + fileName + ".txt";
+		try(Scanner in = new Scanner(new File(filePath), "UTF-8")) {
+	        while(in.hasNextLine()) {
+	        	String parts[] = in.nextLine().split(" = ");
+		        locale.put(parts[0], parts[1]);
+	        }
+		}
 	}
 	
 	static void start(boolean looping) {
